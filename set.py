@@ -1,0 +1,97 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'set.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.0
+#
+# WARNING! All changes made in this file will be lost!
+
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+class Ui_Dialog(object):
+    def setupUi(self, Dialog):
+        Dialog.setObjectName("Dialog")
+        Dialog.resize(435, 508)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("resource/设置.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Dialog.setWindowIcon(icon)
+        self.gridLayout = QtWidgets.QGridLayout(Dialog)
+        self.gridLayout.setObjectName("gridLayout")
+        self.widget = QtWidgets.QWidget(Dialog)
+        self.widget.setObjectName("widget")
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.widget)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.deleteButton = QtWidgets.QPushButton(self.widget)
+        self.deleteButton.setObjectName("deleteButton")
+        self.gridLayout_2.addWidget(self.deleteButton, 0, 1, 1, 1)
+        self.searchButton = QtWidgets.QPushButton(self.widget)
+        self.searchButton.setObjectName("searchButton")
+        self.gridLayout_2.addWidget(self.searchButton, 0, 2, 1, 1)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_2.addItem(spacerItem, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.widget, 1, 0, 1, 1)
+        self.tabWidget = QtWidgets.QTabWidget(Dialog)
+        self.tabWidget.setObjectName("tabWidget")
+        self.tabWidgetPage1 = QtWidgets.QWidget()
+        self.tabWidgetPage1.setObjectName("tabWidgetPage1")
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.tabWidgetPage1)
+        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.treeWidget = QtWidgets.QTreeWidget(self.tabWidgetPage1)
+        self.treeWidget.setObjectName("treeWidget")
+        self.gridLayout_3.addWidget(self.treeWidget, 0, 0, 1, 1)
+        self.tabWidget.addTab(self.tabWidgetPage1, "")
+        self.tabWidgetPage2 = QtWidgets.QWidget()
+        self.tabWidgetPage2.setObjectName("tabWidgetPage2")
+        self.gridLayout_4 = QtWidgets.QGridLayout(self.tabWidgetPage2)
+        self.gridLayout_4.setObjectName("gridLayout_4")
+        self.comboBox = QtWidgets.QComboBox(self.tabWidgetPage2)
+        self.comboBox.setObjectName("comboBox")
+        self.gridLayout_4.addWidget(self.comboBox, 0, 1, 1, 1)
+        self.label_3 = QtWidgets.QLabel(self.tabWidgetPage2)
+        self.label_3.setObjectName("label_3")
+        self.gridLayout_4.addWidget(self.label_3, 0, 0, 1, 1)
+        self.listWidget = QtWidgets.QListWidget(self.tabWidgetPage2)
+        self.listWidget.setObjectName("listWidget")
+        self.gridLayout_4.addWidget(self.listWidget, 1, 0, 1, 2)
+        self.tabWidget.addTab(self.tabWidgetPage2, "")
+        self.tab = QtWidgets.QWidget()
+        self.tab.setObjectName("tab")
+        self.gridLayout_5 = QtWidgets.QGridLayout(self.tab)
+        self.gridLayout_5.setObjectName("gridLayout_5")
+        self.comboBox_3 = QtWidgets.QComboBox(self.tab)
+        self.comboBox_3.setObjectName("comboBox_3")
+        self.gridLayout_5.addWidget(self.comboBox_3, 1, 1, 1, 1)
+        self.comboBox_2 = QtWidgets.QComboBox(self.tab)
+        self.comboBox_2.setObjectName("comboBox_2")
+        self.gridLayout_5.addWidget(self.comboBox_2, 0, 1, 1, 1)
+        self.label = QtWidgets.QLabel(self.tab)
+        self.label.setObjectName("label")
+        self.gridLayout_5.addWidget(self.label, 0, 0, 1, 1)
+        self.label_2 = QtWidgets.QLabel(self.tab)
+        self.label_2.setObjectName("label_2")
+        self.gridLayout_5.addWidget(self.label_2, 1, 0, 1, 1)
+        self.listWidget_2 = QtWidgets.QListWidget(self.tab)
+        self.listWidget_2.setObjectName("listWidget_2")
+        self.gridLayout_5.addWidget(self.listWidget_2, 2, 0, 1, 2)
+        self.tabWidget.addTab(self.tab, "")
+        self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
+
+        self.retranslateUi(Dialog)
+        self.tabWidget.setCurrentIndex(2)
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+    def retranslateUi(self, Dialog):
+        _translate = QtCore.QCoreApplication.translate
+        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        self.deleteButton.setText(_translate("Dialog", "删除"))
+        self.searchButton.setText(_translate("Dialog", "搜寻"))
+        self.treeWidget.headerItem().setText(0, _translate("Dialog", "笔记本"))
+        self.treeWidget.headerItem().setText(1, _translate("Dialog", "地址"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabWidgetPage1), _translate("Dialog", "笔记本"))
+        self.label_3.setText(_translate("Dialog", "笔记本"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabWidgetPage2), _translate("Dialog", "分区"))
+        self.label.setText(_translate("Dialog", "笔记本"))
+        self.label_2.setText(_translate("Dialog", "分区"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Dialog", "页"))

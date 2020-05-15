@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Main</class>
+ <widget class="QMainWindow" name="Main">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1006</width>
+    <height>743</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>简Note</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>resource/book.ico</normaloff>resource/book.ico</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QTreeWidget" name="tree">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <column>
+       <property name="text">
+        <string>笔记本</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QTextBrowser" name="textBrowser">
+      <property name="styleSheet">
+       <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1006</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="New">
+    <property name="title">
+     <string>新建</string>
+    </property>
+    <addaction name="addNoteBook"/>
+    <addaction name="addBlock"/>
+    <addaction name="addPage"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="tool">
+    <property name="title">
+     <string>工具</string>
+    </property>
+    <addaction name="set_tool"/>
+    <addaction name="about"/>
+   </widget>
+   <widget class="QMenu" name="file">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="check"/>
+    <addaction name="welcome"/>
+    <addaction name="log"/>
+    <addaction name="separator"/>
+    <addaction name="actionimport_data"/>
+    <addaction name="actionoutput_data"/>
+   </widget>
+   <addaction name="New"/>
+   <addaction name="file"/>
+   <addaction name="tool"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="addNoteBook">
+   <property name="icon">
+    <iconset>
+     <normaloff>F:/Picture/ico库/笔记本.png</normaloff>F:/Picture/ico库/笔记本.png</iconset>
+   </property>
+   <property name="text">
+    <string>笔记本</string>
+   </property>
+  </action>
+  <action name="addBlock">
+   <property name="icon">
+    <iconset>
+     <normaloff>resource/文件.png</normaloff>resource/文件.png</iconset>
+   </property>
+   <property name="text">
+    <string>分区</string>
+   </property>
+  </action>
+  <action name="addPage">
+   <property name="icon">
+    <iconset>
+     <normaloff>resource/页面管理.png</normaloff>resource/页面管理.png</iconset>
+   </property>
+   <property name="text">
+    <string>页</string>
+   </property>
+  </action>
+  <action name="set_tool">
+   <property name="icon">
+    <iconset>
+     <normaloff>resource/设置.png</normaloff>resource/设置.png</iconset>
+   </property>
+   <property name="text">
+    <string>设置</string>
+   </property>
+  </action>
+  <action name="check">
+   <property name="icon">
+    <iconset>
+     <normaloff>resource/查看.png</normaloff>resource/查看.png</iconset>
+   </property>
+   <property name="text">
+    <string>查看</string>
+   </property>
+  </action>
+  <action name="log">
+   <property name="icon">
+    <iconset>
+     <normaloff>resource/日志.png</normaloff>resource/日志.png</iconset>
+   </property>
+   <property name="text">
+    <string>日志</string>
+   </property>
+  </action>
+  <action name="welcome">
+   <property name="icon">
+    <iconset>
+     <normaloff>resource/应用欢迎.png</normaloff>resource/应用欢迎.png</iconset>
+   </property>
+   <property name="text">
+    <string>欢迎界面</string>
+   </property>
+  </action>
+  <action name="about">
+   <property name="icon">
+    <iconset>
+     <normaloff>resource/关于.png</normaloff>resource/关于.png</iconset>
+   </property>
+   <property name="text">
+    <string>关于</string>
+   </property>
+  </action>
+  <action name="actionimport_data">
+   <property name="icon">
+    <iconset>
+     <normaloff>resource/导入.png</normaloff>resource/导入.png</iconset>
+   </property>
+   <property name="text">
+    <string>导入</string>
+   </property>
+  </action>
+  <action name="actionoutput_data">
+   <property name="icon">
+    <iconset>
+     <normaloff>resource/导出.png</normaloff>resource/导出.png</iconset>
+   </property>
+   <property name="text">
+    <string>导出</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
