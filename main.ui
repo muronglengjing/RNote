@@ -78,6 +78,8 @@
     <addaction name="separator"/>
     <addaction name="actionimport_data"/>
     <addaction name="actionoutput_data"/>
+    <addaction name="separator"/>
+    <addaction name="actionweb"/>
    </widget>
    <addaction name="New"/>
    <addaction name="file"/>
@@ -172,6 +174,15 @@
    </property>
    <property name="text">
     <string>导出</string>
+   </property>
+  </action>
+  <action name="actionweb">
+   <property name="icon">
+    <iconset>
+     <normaloff>resource/浏览器.png</normaloff>resource/浏览器.png</iconset>
+   </property>
+   <property name="text">
+    <string>通过浏览器查看</string>
    </property>
   </action>
  </widget>
