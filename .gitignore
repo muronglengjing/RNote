@@ -6,3 +6,4 @@ resource/address.pk
 resource/log.txt
 resource/book.pk
 log.txt
+synchronization.py
