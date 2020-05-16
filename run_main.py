@@ -237,7 +237,6 @@ def read(file):
                 if x == "\n":
                     continue
                 x = x.replace("\n", "")
-                print(mA.analyses(x))
                 ui.textBrowser.append(mA.analyses(x))
     except IOError:
         logging.warning("failed to read")
