@@ -7,3 +7,4 @@ resource/log.txt
 resource/book.pk
 log.txt
 synchronization.py
+run_main.spec
