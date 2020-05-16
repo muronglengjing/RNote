@@ -6,6 +6,7 @@ from PyQt5.QtCore import QDir
 from PyQt5.QtWidgets import QFileDialog, QDialogButtonBox, QTreeWidgetItem, QAction, QListWidgetItem
 
 import about
+import function
 import newPage, newBlock, newBook, set
 from PyQt5 import QtWidgets
 
@@ -17,56 +18,6 @@ book = {}  # 名字-地址
 logging.basicConfig(format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s',
                     level=logging.DEBUG, filename='log.txt',
                     filemode='a')
-
-
-class MarkdownAnalyses:
-    def __init__(self):
-        self.point = None
-        self.style = "p"
-
-    def output(self, text=""):
-        if self.point == "code":
-            self.style = "code"
-        elif self.point == "em":
-            self.style = "strong"
-        if "**" in text:
-            while "**" in text:
-                if self.point == "em":
-                    self.point = None
-                    text = text.replace("**", r"</strong>", 1)
-                    continue
-                else:
-                    self.point = "em"
-                    text = text.replace("**", "<strong>", 1)
-                    continue
-        if "```" in text:
-            while "```" in text:
-                if self.point == "code":
-                    self.point = None
-                    text = text.replace("```", "", 1)
-                    continue
-                else:
-                    self.point = "code"
-                    text = text.replace("```", "", 1)
-                    continue
-            self.style = "code"
-        if "*" in text:
-            while "*" in text:
-                if self.point == "italic":
-                    self.point = None
-                    text = text.replace("*", r"</i>", 1)
-                    continue
-                else:
-                    self.point = "italic"
-                    text = text.replace("*", "<i>", 1)
-                    continue
-        if "#" in text:
-            number = text.count("#")
-            text = text.replace("#", "")
-            self.style = "h{}".format(number)
-        html = "<{}>{}</{}>".format(self.style, text, self.style)
-        self.style = "p"
-        return html
 
 
 class Ui(main.Ui_Main):
@@ -285,10 +236,9 @@ def read(file):
 
                 if x == "\n":
                     continue
-
                 x = x.replace("\n", "")
-
-                ui.textBrowser.append(mA.output(x))
+                print(mA.analyses(x))
+                ui.textBrowser.append(mA.analyses(x))
     except IOError:
         logging.warning("failed to read")
 
@@ -511,7 +461,7 @@ if __name__ == "__main__":
     set_ui = set.Ui_Dialog()
     set_ui.setupUi(set_Dialog)
 
-    mA = MarkdownAnalyses()
+    mA = function.MarkdownAnalyses()
 
     read("resource/readme")
 
