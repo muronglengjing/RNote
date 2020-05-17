@@ -32,7 +32,7 @@ def publish(text):
             start_a, end_a = re.search(r"\(\S*\)", text, re.I).span()
             start_t, end_t = re.search(r"\[\S*\]", text, re.I).span()
             text = re.sub(r"\[\S*\]\(\S*\)", '<a href="{}">{}</a>'.format(text[start_a + 1:end_a - 1],
-                                               text[start_t + 1:end_t - 1]), text)
+                                                                          text[start_t + 1:end_t - 1]), text)
     return text
 
 
@@ -81,6 +81,87 @@ class MarkdownAnalyses:
             text = publish(text)
             return "<p>" + text + "</p>"
 
-    def html_output(self,text):
-        self.text += self.analyses(text)
+    def analyses_whole(self, text):
+        while re.search(r"\#+\s+.*\n", text):
+            t = text[re.search(r"\#+\s+.*\n", text).start():re.search(r"\#+\s+.*\n", text).end()]
+            times = t.count("#")
+            t = re.sub(r"\#", "", t)
+            t = re.sub(r"\s", "", t)
+            text = re.sub(r"\#+\s*.*", "<h{}>".format(times) + t + "</h{}>".format(times), text, 1)
 
+        while re.search(r"\n\>\s+.*\n", text):
+            t = text[re.search(r"\n\>\s+.*\n", text).start():re.search(r"\n\>\s+.*\n", text).end()]
+            t = re.sub(r"\>", "", t)
+            t = re.sub(r"\s", "", t)
+            text = re.sub(r"\n\>\s*.*", "\n<p><q>" + t + "</q></p>", text, 1)
+
+        while re.search(r"\!\(.+\)\[\S+\]", text):
+            start, end = re.search(r"\!\(.+\)\[\S+\]", text).span()
+            t = text[start:end]
+            start_a, end_a = re.search(r"\[\S+\]", t).span()
+            start_t, end_t = re.search(r"\!\(.+\)", t).span()
+            text = re.sub(r"\!\(.+\)\[\S+\]", '<img src="{}"  alt="{}" />'.format(t[start_a + 1:end_a - 1],
+                                                                                  t[start_t + 2:end_t - 1]), text)
+        while re.search(r"\[\S*\]\(\S+\)", text):
+            t = text[re.search(r"\[\S*\]\(\S+\)", text).start():re.search(r"\[\S*\]\(\S+\)", text).end()]
+            start_a, end_a = re.search(r"\(\S+\)", t).span()
+            start_t, end_t = re.search(r"\[\S*\]", t).span()
+            text = re.sub(r"\[\S*\]\(\S*\)", '<a href="{}">{}</a>'.format(t[start_a + 1:end_a - 1],
+                                                                          t[start_t + 1:end_t - 1]), text)
+        while re.search(r"\`\`\`", text):
+            if self.point == "pre":
+                text = re.sub(r"\`\`\`", "</pre>", text, 1)
+            while re.search(r"\n\`\`\`", text):
+                if self.point is None:
+                    self.point = "pre"
+                    text = re.sub(r"\`\`\`", "\n<pre>", text, 1)
+                    break
+            while re.search(r"\`\`\`.+\`\`\`", text):
+                t = text[re.search(r"\`\`\`.+\`\`\`", text).start():re.search(r"\`\`\`.+\`\`\`", text).end()]
+                text = re.sub(r"\`\`\`.+\`\`\`", "<code>" + t[3: -3] + "</code>", text, 1)
+                break
+
+        lists = text.split("\n")
+        text = ""
+        for li in lists:
+            if li == "":
+                continue
+            if re.search(r"\<[^\/]*.*\>", li):
+                text += li + '\n'
+                continue
+            if self.point == "/" and re.search(r"\<\[^\/]*\>", li):
+                self.point = None
+                text += li + '\n'
+                continue
+            elif self.point == "/":
+                text += li + '\n'
+                continue
+            elif re.search(r"\<\[^\/]*\>", li):
+                text += li + '\n'
+                self.point = "/"
+                continue
+            text += "<p>" + li + "</p>" + '\n'
+
+        while re.search(r"\*\*\*", text):
+            if self.point == "em":
+                text = re.sub(r"\*\*\*", "</b></i>", text, 1)
+            else:
+                self.point = None
+                text = re.sub(r"\*\*\*", "<i><b>", text, 1)
+        while re.search(r"\*\*", text):
+            if self.point == "em":
+                text = re.sub(r"\*\*", "</b>", text, 1)
+            else:
+                self.point = None
+                text = re.sub(r"\*\*", "<b>", text, 1)
+        while re.search(r"\*", text):
+            if self.point == "em":
+                text = re.sub(r"\*", "</i>", text, 1)
+            else:
+                self.point = None
+                text = re.sub(r"\*", "<i>", text, 1)
+
+        print(text)
+
+    def html_output(self, text):
+        self.text += self.analyses(text)
