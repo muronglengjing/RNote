@@ -1,16 +1,19 @@
-import sys
-import logging, pickle
+import logging
 import os
+import pickle
+import sys
 
-from PyQt5.QtCore import QDir, QUrl
-from PyQt5.QtWidgets import QFileDialog, QDialogButtonBox, QTreeWidgetItem, QAction, QListWidgetItem
+from PyQt5 import QtWidgets
+from PyQt5.QtCore import QDir
+from PyQt5.QtWidgets import QFileDialog, QDialogButtonBox, QTreeWidgetItem, QListWidgetItem
 
 import about
 import function
-import newPage, newBlock, newBook, set
-from PyQt5 import QtWidgets
-
 import main
+import newBlock
+import newBook
+import newPage
+import set
 
 address = {}
 book = {}  # 名字-地址
@@ -209,6 +212,7 @@ def text_save():
                     logging.debug("save the file {}".format(file))
                     with open(file, 'w', encoding='utf-8') as f:
                         f.write(ui.plainTextEdit.toPlainText())
+                    ui.statusbar.showMessage("内容更新到{}".format(file))
                 except EOFError:
                     logging.warning("failed to save")
     except IOError:
