@@ -2,7 +2,7 @@ import sys
 import logging, pickle
 import os
 
-from PyQt5.QtCore import QDir
+from PyQt5.QtCore import QDir, QUrl
 from PyQt5.QtWidgets import QFileDialog, QDialogButtonBox, QTreeWidgetItem, QAction, QListWidgetItem
 
 import about
@@ -194,7 +194,7 @@ def set_init():
         logging.debug("failed to get")
 
 
-def choose_page():
+def text_save():
     try:
         if not ui.tree.currentItem().parent() is None:
             if not ui.tree.currentItem().parent().parent() is None:
@@ -206,11 +206,41 @@ def choose_page():
                 pages = ui.tree.currentItem().text(0)
                 file = "{}/{}/{}.md".format(address[dir], block, pages)
                 try:
-                    logging.debug("read the file {}".format(file))
-                    read(file)
-                    ui.statusbar.showMessage("文件{}打开".format(file))
+                    logging.debug("save the file {}".format(file))
+                    with open(file, 'w', encoding='utf-8') as f:
+                        f.write(ui.plainTextEdit.toPlainText())
                 except EOFError:
-                    logging.warning("failed to read")
+                    logging.warning("failed to save")
+    except IOError:
+        logging.warning("failed to get")
+
+
+def choose_page():
+    try:
+        if not ui.tree.currentItem().parent() is None:
+            if not ui.tree.currentItem().parent().parent() is None:
+                logging.debug("get the text {}".format(ui.tree.currentItem().text(0)))
+                items = ui.tree.currentItem().parent().parent()
+                dir = items.data(0, 0)
+                item = ui.tree.currentItem().parent()
+                block = item.data(0, 0)
+                pages = ui.tree.currentItem().text(0)
+                file = "{}/{}/{}.md".format(address[dir], block, pages)
+                if ui.toolBox.currentIndex() == 0:
+                    try:
+                        logging.debug("read the file {}".format(file))
+                        read(file)
+                        ui.statusbar.showMessage("文件{}打开".format(file))
+                    except EOFError:
+                        logging.warning("failed to read")
+                elif ui.toolBox.currentIndex() == 1:
+                    try:
+                        ui.plainTextEdit.clear()
+                        logging.debug("read the file {}".format(file))
+                        with open(file, 'r', encoding='utf-8') as f:
+                            ui.plainTextEdit.appendPlainText(f.read())
+                    except EOFError:
+                        logging.warning("failed to read")
     except IOError:
         logging.warning("failed to get")
 
@@ -229,15 +259,9 @@ def read(file):
         logging.debug("read file {}".format(file))
         ui.textBrowser.clear()
         with open(file, "r", encoding='utf-8') as f:
-            while True:
-                x = f.readline()
-                if not x:
-                    break
-
-                if x == "\n":
-                    continue
-                x = x.replace("\n", "")
-                ui.textBrowser.append(mA.analyses(x))
+            x = f.read()
+            x = mA.analyses_whole(x)
+            ui.textBrowser.append(x)
     except IOError:
         logging.warning("failed to read")
 
@@ -424,6 +448,8 @@ def connect():
     ui.set_tool.triggered.connect(set_init)
     ui.actionimport_data.triggered.connect(data_input)
     ui.actionoutput_data.triggered.connect(data_output)
+    ui.save.clicked.connect(text_save)
+    ui.toolBox.currentChanged.connect(choose_page)
     book_ui.pushButton.clicked.connect(lambda: open_file(book_Dialog))
     book_ui.buttonBox.button(QDialogButtonBox.Ok).clicked.connect(add_book)
     block_ui.buttonBox.button(QDialogButtonBox.Ok).clicked.connect(add_block)

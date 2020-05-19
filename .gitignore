@@ -8,3 +8,4 @@ resource/book.pk
 log.txt
 synchronization.py
 run_main.spec
+/resource/web_view.html

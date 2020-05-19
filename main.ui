@@ -35,10 +35,107 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QTextBrowser" name="textBrowser">
-      <property name="styleSheet">
-       <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+     <widget class="QToolBox" name="toolBox">
+      <property name="currentIndex">
+       <number>1</number>
       </property>
+      <widget class="QWidget" name="page_view">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>721</width>
+         <height>580</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>浏览</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QTextBrowser" name="textBrowser">
+          <property name="styleSheet">
+           <string notr="true">font: 75 12pt &quot;微软雅黑&quot;;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_edit">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>721</width>
+         <height>580</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>编辑</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QPlainTextEdit" name="plainTextEdit">
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;微软雅黑&quot;;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QWidget" name="widget" native="true">
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="1">
+            <widget class="QPushButton" name="save">
+             <property name="text">
+              <string>保存</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_web">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>在浏览器中预览</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QWebEngineView" name="webEngineView">
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;微软雅黑&quot;;</string>
+          </property>
+          <property name="url">
+           <url>
+            <string>about:blank</string>
+           </url>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -175,6 +272,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header location="global">QtWebEngineWidgets/QWebEngineView</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

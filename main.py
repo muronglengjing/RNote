@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.12.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -29,10 +29,50 @@ class Ui_Main(object):
         self.tree.setSizePolicy(sizePolicy)
         self.tree.setObjectName("tree")
         self.gridLayout.addWidget(self.tree, 0, 0, 1, 1)
-        self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
+        self.toolBox = QtWidgets.QToolBox(self.centralwidget)
+        self.toolBox.setObjectName("toolBox")
+        self.page_view = QtWidgets.QWidget()
+        self.page_view.setGeometry(QtCore.QRect(0, 0, 721, 580))
+        self.page_view.setObjectName("page_view")
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.page_view)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.textBrowser = QtWidgets.QTextBrowser(self.page_view)
         self.textBrowser.setStyleSheet("font: 75 12pt \"微软雅黑\";")
         self.textBrowser.setObjectName("textBrowser")
-        self.gridLayout.addWidget(self.textBrowser, 0, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.textBrowser, 0, 0, 1, 1)
+        self.toolBox.addItem(self.page_view, "")
+        self.page_edit = QtWidgets.QWidget()
+        self.page_edit.setGeometry(QtCore.QRect(0, 0, 721, 580))
+        self.page_edit.setObjectName("page_edit")
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.page_edit)
+        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.plainTextEdit = QtWidgets.QPlainTextEdit(self.page_edit)
+        self.plainTextEdit.setStyleSheet("font: 12pt \"微软雅黑\";")
+        self.plainTextEdit.setObjectName("plainTextEdit")
+        self.gridLayout_3.addWidget(self.plainTextEdit, 0, 0, 1, 1)
+        self.widget = QtWidgets.QWidget(self.page_edit)
+        self.widget.setObjectName("widget")
+        self.gridLayout_5 = QtWidgets.QGridLayout(self.widget)
+        self.gridLayout_5.setObjectName("gridLayout_5")
+        self.save = QtWidgets.QPushButton(self.widget)
+        self.save.setObjectName("save")
+        self.gridLayout_5.addWidget(self.save, 0, 1, 1, 1)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_5.addItem(spacerItem, 0, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.widget, 1, 0, 1, 1)
+        self.toolBox.addItem(self.page_edit, "")
+        self.page_web = QtWidgets.QWidget()
+        self.page_web.setGeometry(QtCore.QRect(0, 0, 100, 30))
+        self.page_web.setObjectName("page_web")
+        self.gridLayout_4 = QtWidgets.QGridLayout(self.page_web)
+        self.gridLayout_4.setObjectName("gridLayout_4")
+        self.webEngineView = QtWebEngineWidgets.QWebEngineView(self.page_web)
+        self.webEngineView.setStyleSheet("font: 12pt \"微软雅黑\";")
+        self.webEngineView.setUrl(QtCore.QUrl("about:blank"))
+        self.webEngineView.setObjectName("webEngineView")
+        self.gridLayout_4.addWidget(self.webEngineView, 0, 0, 1, 1)
+        self.toolBox.addItem(self.page_web, "")
+        self.gridLayout.addWidget(self.toolBox, 0, 1, 1, 1)
         Main.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(Main)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1006, 26))
@@ -114,12 +154,17 @@ class Ui_Main(object):
         self.menubar.addAction(self.tool.menuAction())
 
         self.retranslateUi(Main)
+        self.toolBox.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(Main)
 
     def retranslateUi(self, Main):
         _translate = QtCore.QCoreApplication.translate
         Main.setWindowTitle(_translate("Main", "简Note"))
         self.tree.headerItem().setText(0, _translate("Main", "笔记本"))
+        self.toolBox.setItemText(self.toolBox.indexOf(self.page_view), _translate("Main", "浏览"))
+        self.save.setText(_translate("Main", "保存"))
+        self.toolBox.setItemText(self.toolBox.indexOf(self.page_edit), _translate("Main", "编辑"))
+        self.toolBox.setItemText(self.toolBox.indexOf(self.page_web), _translate("Main", "在浏览器中预览"))
         self.New.setTitle(_translate("Main", "新建"))
         self.tool.setTitle(_translate("Main", "工具"))
         self.file.setTitle(_translate("Main", "文件"))
@@ -133,3 +178,4 @@ class Ui_Main(object):
         self.about.setText(_translate("Main", "关于"))
         self.actionimport_data.setText(_translate("Main", "导入"))
         self.actionoutput_data.setText(_translate("Main", "导出"))
+from PyQt5 import QtWebEngineWidgets
