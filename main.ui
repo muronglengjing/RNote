@@ -66,8 +66,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>721</width>
-         <height>610</height>
+         <width>144</width>
+         <height>166</height>
         </rect>
        </property>
        <attribute name="label">
@@ -162,6 +162,9 @@
    <property name="text">
     <string>笔记本</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
   </action>
   <action name="addBlock">
    <property name="icon">
@@ -170,6 +173,9 @@
    </property>
    <property name="text">
     <string>分区</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
    </property>
   </action>
   <action name="addPage">
@@ -180,6 +186,9 @@
    <property name="text">
     <string>页</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
   </action>
   <action name="set_tool">
    <property name="icon">
@@ -188,6 +197,9 @@
    </property>
    <property name="text">
     <string>设置</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="check">
@@ -198,6 +210,9 @@
    <property name="text">
     <string>查看</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
   </action>
   <action name="log">
    <property name="icon">
@@ -206,6 +221,9 @@
    </property>
    <property name="text">
     <string>日志</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
    </property>
   </action>
   <action name="welcome">
@@ -216,6 +234,9 @@
    <property name="text">
     <string>欢迎界面</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
   </action>
   <action name="about">
    <property name="icon">
@@ -224,6 +245,9 @@
    </property>
    <property name="text">
     <string>关于</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
    </property>
   </action>
   <action name="actionimport_data">
@@ -234,6 +258,9 @@
    <property name="text">
     <string>导入</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
   </action>
   <action name="actionoutput_data">
    <property name="icon">
@@ -242,6 +269,9 @@
    </property>
    <property name="text">
     <string>导出</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
  </widget>
