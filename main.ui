@@ -66,8 +66,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>721</width>
-         <height>610</height>
+         <width>154</width>
+         <height>166</height>
         </rect>
        </property>
        <attribute name="label">
@@ -202,7 +202,7 @@
     <string>设置</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+S</string>
+    <string>Ctrl+Shift+S</string>
    </property>
   </action>
   <action name="check">
